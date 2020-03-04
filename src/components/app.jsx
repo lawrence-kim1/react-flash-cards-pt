@@ -15,7 +15,7 @@ class App extends React.Component {
   }
 
   getView() {
-    switch {
+    switch (this.state.view) {
       case 'create-card':
         return <CreateCard />;
       case 'review-cards':
@@ -29,7 +29,9 @@ class App extends React.Component {
 
   render() {
     return(
-      <h1 className="text-center">Flash Card App</h1>
+      <div>
+        {this.getView()}
+      </div>
     )
   }
 }
