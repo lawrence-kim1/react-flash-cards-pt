@@ -44,6 +44,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log('Cards from App', this.state.cards);
     return(
       <div>
         <Nav setView={this.setView} />
