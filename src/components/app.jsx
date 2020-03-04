@@ -8,6 +8,11 @@ class App extends React.Component {
       view: ViewCards.value
     }
   }
+
+  setView(cardView) {
+    this.setState({view})
+  }
+
   render() {
     return(
       <h1 className="text-center">Flash Card App</h1>
