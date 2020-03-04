@@ -1,15 +1,8 @@
 import React from 'react';
 
 class ViewCards extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cards: null
-    }
-  }
 
-
-  componentDidMount() {
+  displayCards() {
     const cardsArray = this.props.cards;
     const cards = cardsArray.map(card => {
       return (
@@ -31,7 +24,7 @@ class ViewCards extends React.Component {
         </div>
       );
     });
-    this.setState( {cards} );
+    return cards;
   }
 
   render() {
@@ -39,7 +32,7 @@ class ViewCards extends React.Component {
       <div className="container-sm">
         <h1 className="text-center mb-3">My Flash Cards</h1>
         <div className="row">
-          {this.state.cards}
+          {this.displayCards()}
         </div>
       </div>
     );
