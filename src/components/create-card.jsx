@@ -7,6 +7,16 @@ class CreateCard extends React.Component {
       question: '',
       answer: ''
     }
+    this.handleQuestionChange = this.handleQuestionChange.bind(this);
+    this.handleAnswerChange = this.handleAnswerChange.bind(this);
+  }
+
+  handleQuestionChange(event) {
+    this.setState( {question: event.target.value} );
+  }
+
+  handleAnswerChange(event) {
+    this.setState( {answer: event.target.value} );
   }
 
   render() {
