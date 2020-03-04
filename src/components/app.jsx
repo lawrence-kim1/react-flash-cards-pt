@@ -9,10 +9,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       view: 'view-cards',
+      activeCard: null,
       cards: localStorage.getItem('flash-cards')
         ? JSON.parse(localStorage.getItem('flash-cards'))
-        : [],
-      activeCard: null
+        : []
     }
     this.setView = this.setView.bind(this);
     this.addCard = this.addCard.bind(this);

@@ -7,14 +7,21 @@ class ReviewCards extends React.Component {
   }
 
   componentDidMount() {
-    this.props.setActiveCard(0)
+    this.props.setActiveCard(0);
+  }
+
+  displayCard() {
+    if (this.props.activeCard === null) return;
+    return this.props.activeCard.question;
   }
 
   render() {
     return(
       <div className="container-sm">
         <h1 className="text-center">Review Cards</h1>
-        <div></div>
+        <div>
+          {this.displayCard()}
+        </div>
       </div>
     )
   }
