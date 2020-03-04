@@ -46,6 +46,10 @@ class App extends React.Component {
     );
   }
 
+  setActiveCard(index) {
+    this.state.cards.findIndex()
+  }
+
   render() {
     console.log('Cards from App', this.state.cards);
     return(
