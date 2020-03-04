@@ -10,20 +10,27 @@ class CreateCard extends React.Component {
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.handleAnswerChange = this.handleAnswerChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   handleQuestionChange(event) {
-    this.setState( {question: event.target.value} );
+    this.setState({ question: event.target.value });
   }
 
   handleAnswerChange(event) {
-    this.setState( {answer: event.target.value} );
+    this.setState({ answer: event.target.value });
   }
 
   handleSubmit() {
     event.preventDefault();
     this.props.addCard(this.state);
-    this.setState( { question: '', answer: '' } );
+    this.reset();
+  }
+
+  reset() {
+    event.preventDefault();
+    this.setState({ question: '', answer: '' });
+    this.props.setView('view-cards');
   }
 
   render() {
@@ -50,7 +57,7 @@ class CreateCard extends React.Component {
             rows="3" />
           </div>
           <div className="d-flex justify-content-end">
-            <button className="btn btn-outline-danger mr-3">Cancel</button>
+            <button onClick={this.reset} className="btn btn-outline-danger mr-3">Cancel</button>
             <button className="btn btn-outline-primary">Save Card</button>
           </div>
         </form>
