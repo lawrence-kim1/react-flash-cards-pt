@@ -16,6 +16,7 @@ class App extends React.Component {
     }
     this.setView = this.setView.bind(this);
     this.addCard = this.addCard.bind(this);
+    this.setActiveCard = this.setActiveCard.bind(this);
   }
 
   setView(view) {
@@ -47,7 +48,7 @@ class App extends React.Component {
   }
 
   setActiveCard(index) {
-    this.state.cards.findIndex(card => card === index);
+    console.log(this.state.cards.findIndex(card => card === index));
   }
 
   render() {
