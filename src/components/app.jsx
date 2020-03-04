@@ -11,7 +11,8 @@ class App extends React.Component {
       view: 'view-cards',
       cards: localStorage.getItem('flash-cards')
         ? JSON.parse(localStorage.getItem('flash-cards'))
-        : []
+        : [],
+      activeCard: null
     }
     this.setView = this.setView.bind(this);
     this.addCard = this.addCard.bind(this);
@@ -26,7 +27,7 @@ class App extends React.Component {
       case 'create-card':
         return <CreateCard addCard={this.addCard} setView={this.setView} />;
       case 'review-cards':
-        return <ReviewCards />;
+        return <ReviewCards activeCard={this.state.activeCard} />;
       case 'view-cards':
         return <ViewCards cards={this.state.cards} />;
       default:
