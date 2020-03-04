@@ -12,7 +12,11 @@ class ReviewCards extends React.Component {
 
   displayCard() {
     if (this.props.activeCard === null) return;
-    return this.props.activeCard.question;
+    return (
+      this.state.front
+      ? this.props.activeCard.question
+      : this.props.activeCard.answer
+    )
   }
 
   render() {
