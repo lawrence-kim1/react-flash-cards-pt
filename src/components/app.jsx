@@ -12,6 +12,7 @@ class App extends React.Component {
       cards: []
     }
     this.setView = this.setView.bind(this);
+    this.addCard = this.addCard.bind(this);
   }
 
   setView(view) {
@@ -32,7 +33,12 @@ class App extends React.Component {
   }
 
   saveCards() {
-    localStorage.flash-cards = JSON.stringify(this.state.cards)
+    localStorage.setItem(JSON.stringify(this.state.cards))
+  }
+
+  addCard(card) {
+    this.setState({cards: this.state.cards.concat(card)});
+    this.saveCards();
   }
 
   render() {
