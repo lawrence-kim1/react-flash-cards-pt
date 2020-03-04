@@ -10,6 +10,7 @@ class App extends React.Component {
     this.state = {
       view: 'view-cards'
     }
+    this.setView = this.setView.bind(this);
   }
 
   setView(view) {
