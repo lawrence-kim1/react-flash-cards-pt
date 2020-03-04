@@ -27,7 +27,7 @@ class App extends React.Component {
       case 'create-card':
         return <CreateCard addCard={this.addCard} setView={this.setView} />;
       case 'review-cards':
-        return <ReviewCards activeCard={this.state.activeCard} />;
+        return <ReviewCards activeCard={this.state.activeCard} setActiveCard={this.setActiveCard} />;
       case 'view-cards':
         return <ViewCards cards={this.state.cards} />;
       default:
@@ -47,7 +47,7 @@ class App extends React.Component {
   }
 
   setActiveCard(index) {
-    this.state.cards.findIndex()
+    this.state.cards.findIndex(card => card === index);
   }
 
   render() {
