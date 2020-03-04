@@ -26,11 +26,21 @@ class CreateCard extends React.Component {
         <form className="container-sm">
           <div className="form-group">
             <label htmlFor="question">Question:</label>
-            <textarea className="form-control" id="question" rows="3"></textarea>
+            <textarea
+            value={this.state.question}
+            onChange={this.handleQuestionChange}
+            className="form-control"
+            id="question"
+            rows="3" />
           </div>
           <div className="form-group">
             <label htmlFor="answer">Answer:</label>
-            <textarea className="form-control" id="answer" rows="3"></textarea>
+            <textarea
+            value={this.state.answer}
+            onChange={this.handleAnswerChange}
+            className="form-control"
+            id="answer"
+            rows="3" />
           </div>
           <div className="d-flex justify-content-end">
             <button className="btn btn-outline-danger mr-3">Cancel</button>
