@@ -9,6 +9,7 @@ class CreateCard extends React.Component {
     }
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.handleAnswerChange = this.handleAnswerChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleQuestionChange(event) {
@@ -19,11 +20,17 @@ class CreateCard extends React.Component {
     this.setState( {answer: event.target.value} );
   }
 
+  handleSubmit() {
+    event.preventDefault();
+    this.props.addCard(this.state);
+    this.setState( { question: '', answer: '' } );
+  }
+
   render() {
     return(
       <div>
         <h1 className="text-center">Create New Card</h1>
-        <form className="container-sm">
+        <form className="container-sm" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="question">Question:</label>
             <textarea
