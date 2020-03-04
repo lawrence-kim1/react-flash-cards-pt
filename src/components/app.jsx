@@ -48,11 +48,11 @@ class App extends React.Component {
   }
 
   setActiveCard(index) {
-    console.log(this.state.cards.findIndex(card => card === index));
+    const activeCard = this.state.cards[index];
+    this.setState({ activeCard });
   }
 
   render() {
-    console.log('Cards from App', this.state.cards);
     return(
       <div>
         <Nav setView={this.setView} />
