@@ -1,6 +1,14 @@
 import React from 'react';
 
 class CreateCard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      question: '',
+      answer: ''
+    }
+  }
+
   render() {
     return(
       <div>
