@@ -1,8 +1,8 @@
 import React from 'react';
 
-function NavBar() {
+function Nav() {
   return(
-    <nav class="navbar navbar-light bg-light">
+    <nav className="navbar navbar-light bg-light">
       <ul>
         <li className="nav-item">View Cards</li>
         <li className="nav-item">Review Cards</li>
@@ -12,4 +12,4 @@ function NavBar() {
   )
 }
 
-export default NavBar;
+export default Nav;

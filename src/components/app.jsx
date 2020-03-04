@@ -1,6 +1,8 @@
 import React from 'react';
 import ViewCards from './view-cards';
 import ReviewCards from './review-cards';
+import CreateCard from './create-card';
+import Nav from './nav';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +12,7 @@ class App extends React.Component {
     }
   }
 
-  setView(cardView) {
+  setView(view) {
     this.setState({view})
   }
 
@@ -30,6 +32,7 @@ class App extends React.Component {
   render() {
     return(
       <div>
+        <Nav setView={this.setView} />
         {this.getView()}
       </div>
     )
