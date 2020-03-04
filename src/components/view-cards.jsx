@@ -13,7 +13,7 @@ class ViewCards extends React.Component {
     const cardsArray = this.props.cards;
     const cards = cardsArray.map(card => {
       return (
-        <div key={card.question} className="col-sm">
+        <div key={card.question} className="col-sm-4 mb-3">
           <div className="card">
             <div className="card-header">
               Question:
@@ -37,7 +37,7 @@ class ViewCards extends React.Component {
   render() {
     return(
       <div className="container-sm">
-        <h1 className="text-center">View Cards</h1>
+        <h1 className="text-center mb-3">My Flash Cards</h1>
         <div className="row">
           {this.state.cards}
         </div>
