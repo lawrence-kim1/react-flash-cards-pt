@@ -22,7 +22,7 @@ class App extends React.Component {
   getView() {
     switch (this.state.view) {
       case 'create-card':
-        return <CreateCard />;
+        return <CreateCard addCard={this.addCard} />;
       case 'review-cards':
         return <ReviewCards />;
       case 'view-cards':
