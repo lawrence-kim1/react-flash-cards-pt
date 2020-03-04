@@ -11,12 +11,19 @@ class ViewCards extends React.Component {
 
   componentDidMount() {
     const cardsArray = this.props.cards;
-    console.log(cardsArray);
     const cardFront = cardsArray.map(card => {
-      return <div>{card.question}</div>
+      return (
+        <div key={card.question} >
+          <div>
+            {card.question}
+          </div>
+          <div>
+            {card.answer}
+          </div>
+        </div>
+      );
     });
     this.setState( {cardFront} );
-    console.log(this.state.cardFront);
   }
 
   render() {
