@@ -9,12 +9,14 @@ class App extends React.Component {
     super(props);
     this.state = {
       view: 'view-cards',
+      activeCard: null,
       cards: localStorage.getItem('flash-cards')
         ? JSON.parse(localStorage.getItem('flash-cards'))
         : []
     }
     this.setView = this.setView.bind(this);
     this.addCard = this.addCard.bind(this);
+    this.setActiveCard = this.setActiveCard.bind(this);
   }
 
   setView(view) {
@@ -26,7 +28,7 @@ class App extends React.Component {
       case 'create-card':
         return <CreateCard addCard={this.addCard} setView={this.setView} />;
       case 'review-cards':
-        return <ReviewCards />;
+        return <ReviewCards cards={this.state.cards} activeCard={this.state.activeCard} setActiveCard={this.setActiveCard} />;
       case 'view-cards':
         return <ViewCards cards={this.state.cards} />;
       default:
@@ -45,8 +47,12 @@ class App extends React.Component {
     );
   }
 
+  setActiveCard(index) {
+    const activeCard = this.state.cards[index];
+    this.setState({ activeCard });
+  }
+
   render() {
-    console.log('Cards from App', this.state.cards);
     return(
       <div>
         <Nav setView={this.setView} />
