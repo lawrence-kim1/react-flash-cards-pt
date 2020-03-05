@@ -7,6 +7,7 @@ class ReviewCards extends React.Component {
       index: 0,
       front: true
     }
+    this.nextCard = this.nextCard.bind(this);
   }
 
   componentDidMount() {
@@ -24,18 +25,36 @@ class ReviewCards extends React.Component {
 
   nextCard() {
     const allCards = this.props.cards;
-    this.state.index === allCards.length - 1
-      ? this.setState({ index: 0 })
-      : this.setState({ index: index + 1 })
-    this.props.setActiveCard(this.state.index)
+    this.setState(() => {
+      return (this.state.index === allCards.length - 1)
+        ? { index: 0 }
+        : { index: this.state.index + 1 }
+    });
+    this.props.setActiveCard(this.state.index);
+  }
+
+  previousCard() {
+    const allCards = this.props.cards;
+    this.setState(() => {
+      return (this.state.index === 0)
+        ? { index: allCards.length - 1 }
+        : { index: this.state.index - 1 }
+    });
+    this.props.setActiveCard(this.state.index);
   }
 
   render() {
     return(
       <div className="container-sm">
         <h1 className="text-center">Review Cards</h1>
-        <div>
-          {this.displayCard()}
+        <div className="text-light bg-dark text-center">
+          <div>
+            <div className="d-block">
+              {this.displayCard()}
+            </div>
+          </div>
+          <a href="#" className="carousel-control-prev-icon" onClick={this.previousCard}></a>
+          <a href="#" className="carousel-control-next-icon" onClick={this.nextCard}></a>
         </div>
       </div>
     )
