@@ -17,6 +17,7 @@ class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.addCard = this.addCard.bind(this);
     this.setActiveCard = this.setActiveCard.bind(this);
+    this.displayModal = this.displayModal.bind(this);
   }
 
   setView(view) {
@@ -30,7 +31,7 @@ class App extends React.Component {
       case 'review-cards':
         return <ReviewCards cards={this.state.cards} activeCard={this.state.activeCard} setActiveCard={this.setActiveCard} />;
       case 'view-cards':
-        return <ViewCards cards={this.state.cards} />;
+        return <ViewCards cards={this.state.cards} displayModal={this.displayModal} />;
       default:
         return null;
     }
@@ -50,6 +51,15 @@ class App extends React.Component {
   setActiveCard(index) {
     const activeCard = this.state.cards[index];
     this.setState({ activeCard });
+  }
+
+  displayModal(card) {
+    console.log(card);
+    return (
+      <div class="modal">
+        {card.question} {card.answer}
+      </div>
+    )
   }
 
   render() {

@@ -20,8 +20,8 @@ class ViewCards extends React.Component {
                 {card.answer}
               </div>
             </div>
-            <div className="card-footer">
-              <button className="btn btn-danger">Delete</button>
+            <div className="card-footer text-center">
+              <button className="btn btn-danger" onClick={() => this.props.displayModal(card)}>Delete</button>
             </div>
           </div>
         </div>
