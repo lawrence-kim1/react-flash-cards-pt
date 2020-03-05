@@ -81,7 +81,7 @@ class App extends React.Component {
     const deletedCardIndex = oldCards.findIndex(card => deletedCard === card);
     const newCards = [...oldCards];
     newCards.splice(deletedCardIndex, 1);
-    this.setState({ cards: newCards });
+    this.setState({ cards: newCards, modal: null }, () => this.saveCards());
   }
 
   render() {
