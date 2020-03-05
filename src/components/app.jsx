@@ -19,6 +19,7 @@ class App extends React.Component {
     this.addCard = this.addCard.bind(this);
     this.setActiveCard = this.setActiveCard.bind(this);
     this.displayModal = this.displayModal.bind(this);
+    this.deleteCard = this.deleteCard.bind(this);
   }
 
   setView(view) {
@@ -55,7 +56,6 @@ class App extends React.Component {
   }
 
   displayModal(card) {
-    console.log(card);
     if (this.state.modal === null);
     this.setState({ modal:
       <div className="text-center d-flex flex-column align-items-center h-100">
@@ -70,10 +70,18 @@ class App extends React.Component {
         </div>
         <div>
           <button className="btn btn-outline-secondary mr-3">Cancel</button>
-          <button className="btn btn-outline-danger">Delete</button>
+          <button onClick={() => this.deleteCard(card)} className="btn btn-outline-danger">Delete</button>
         </div>
       </div>
     })
+  }
+
+  deleteCard(deletedCard) {
+    const oldCards = this.state.cards;
+    const deletedCardIndex = oldCards.findIndex(card => deletedCard === card);
+    const newCards = [...oldCards];
+    newCards.splice(deletedCardIndex, 1);
+    this.setState({ cards: newCards });
   }
 
   render() {
