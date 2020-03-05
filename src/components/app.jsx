@@ -69,7 +69,7 @@ class App extends React.Component {
           A: {card.answer}
         </div>
         <div>
-          <button className="btn btn-outline-secondary mr-3">Cancel</button>
+          <button onClick={() => this.setState({ modal: null })}className="btn btn-outline-secondary mr-3">Cancel</button>
           <button onClick={() => this.deleteCard(card)} className="btn btn-outline-danger">Delete</button>
         </div>
       </div>
