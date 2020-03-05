@@ -1,0 +1,11 @@
+.modal {
+  height: 100vh;
+  position: fixed;
+  background: rgba(100, 100, 100, 0.4);
+}
+
+.modal-stuff{
+  position: relative;
+  top: 50%;
+  background-color: white;
+}
