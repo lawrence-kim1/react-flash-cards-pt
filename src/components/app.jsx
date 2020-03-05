@@ -10,6 +10,7 @@ class App extends React.Component {
     this.state = {
       view: 'view-cards',
       activeCard: null,
+      modal: null,
       cards: localStorage.getItem('flash-cards')
         ? JSON.parse(localStorage.getItem('flash-cards'))
         : []
@@ -55,18 +56,34 @@ class App extends React.Component {
 
   displayModal(card) {
     console.log(card);
-    return (
-      <div class="modal">
-        {card.question} {card.answer}
+    if (this.state.modal === null);
+    this.setState({ modal:
+      <div className="text-center d-flex flex-column align-items-center h-100">
+        <div>
+          Are you sure you want to delete this card?
+        </div>
+        <div>
+          Q: {card.question}
+        </div>
+        <div>
+          A: {card.answer}
+        </div>
+        <div>
+          <button className="btn btn-outline-secondary mr-3">Cancel</button>
+          <button className="btn btn-outline-danger">Delete</button>
+        </div>
       </div>
-    )
+    })
   }
 
   render() {
     return(
       <div>
         <Nav setView={this.setView} />
-        {this.getView()}
+        <div>
+          {this.getView()}
+          {this.state.modal}
+        </div>
       </div>
     )
   }
