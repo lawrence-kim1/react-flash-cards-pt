@@ -5,8 +5,7 @@ class UpdateCard extends React.Component {
     super(props);
     this.state = {
       question: this.props.card.question,
-      answer: this.props.card.answer,
-      index: this.props.card.index
+      answer: this.props.card.answer
     }
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.handleAnswerChange = this.handleAnswerChange.bind(this);

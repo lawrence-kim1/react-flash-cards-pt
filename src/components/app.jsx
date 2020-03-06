@@ -66,16 +66,13 @@ class App extends React.Component {
   }
 
   displayUpdate(updatingCard) {
-    const cardIndex = this.state.cards.findIndex(card => card.question === updatingCard.question);
-    updatingCard.index = cardIndex;
     this.setState({ view: 'update-card', activeCard: updatingCard });
   }
 
   updateCard(updatedCard) {
     const updatedCards = [...this.state.cards];
-    const updatedIndex = updatedCard.index;
-    delete updatedCard.index;
-    updatedCards.splice(updatedIndex, 1, updatedCard);
+    const cardIndex = this.state.cards.findIndex(card => card === this.state.activeCard);
+    updatedCards.splice(cardIndex, 1, updatedCard);
     this.setState({ cards: updatedCards }, () => this.saveCards());
   }
 
