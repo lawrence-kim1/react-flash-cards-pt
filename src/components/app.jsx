@@ -22,6 +22,7 @@ class App extends React.Component {
     this.setActiveCard = this.setActiveCard.bind(this);
     this.displayModal = this.displayModal.bind(this);
     this.displayUpdate = this.displayUpdate.bind(this);
+    this.updateCard = this.updateCard.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
   }
 
@@ -38,7 +39,7 @@ class App extends React.Component {
       case 'view-cards':
         return <ViewCards cards={this.state.cards} displayModal={this.displayModal} displayUpdate={this.displayUpdate} />;
       case 'update-card':
-        return <UpdateCard setView={this.setView} card={this.state.activeCard} />;
+        return <UpdateCard setView={this.setView} card={this.state.activeCard} updateCard={this.updateCard} />;
       default:
         return null;
     }
@@ -65,7 +66,17 @@ class App extends React.Component {
   }
 
   displayUpdate(card) {
+    const cardIndex = this.state.cards.findIndex(cardObj => cardObj.question === card.question);
+    card.index = cardIndex;
     this.setState({ view: 'update-card', activeCard: card });
+  }
+
+  updateCard(card) {
+    const updatedCards = [...this.state.cards];
+    const cardIndex = card.index;
+    delete card.index;
+    updatedCards.splice(cardIndex, 1, card);
+    this.setState({ cards: updatedCards }, () => this.saveCards());
   }
 
   deleteCard(deletedCard) {
