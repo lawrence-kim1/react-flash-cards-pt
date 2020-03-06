@@ -57,7 +57,7 @@ class App extends React.Component {
   }
 
   displayModal(card) {
-    this.setState({ modal: true });
+    this.setState({ modal: card });
   }
 
   deleteCard(deletedCard) {
@@ -74,7 +74,7 @@ class App extends React.Component {
         <Nav setView={this.setView} />
         <div>
           {this.getView()}
-          <Modal opened={this.state.modal} />
+          <Modal opened={this.state.modal} closeModal={this.displayModal} delete={this.deleteCard} />
         </div>
       </div>
     )
