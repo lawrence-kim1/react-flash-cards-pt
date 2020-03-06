@@ -3,6 +3,7 @@ import ViewCards from './view-cards';
 import ReviewCards from './review-cards';
 import CreateCard from './create-card';
 import Nav from './nav';
+import Modal from './modal';
 
 class App extends React.Component {
   constructor(props) {
@@ -56,26 +57,6 @@ class App extends React.Component {
   }
 
   displayModal(card) {
-    if (this.state.modal === null);
-    this.setState({ modal:
-      <div className="text-center d-flex flex-column align-items-center modal">
-        <div className="modal-stuff">
-          <div>
-            Are you sure you want to delete this card?
-          </div>
-          <div>
-            Q: {card.question}
-          </div>
-          <div>
-            A: {card.answer}
-          </div>
-          <div>
-            <button onClick={() => this.setState({ modal: null })} className="btn btn-outline-secondary mr-3">Cancel</button>
-            <button onClick={() => this.deleteCard(card)} className="btn btn-outline-danger">Delete</button>
-          </div>
-        </div>
-      </div>
-    })
   }
 
   deleteCard(deletedCard) {
