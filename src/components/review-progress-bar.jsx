@@ -5,7 +5,7 @@ class ProgressBar extends React.Component {
     const value = 10;
     return(
       <div className="progress">
-        <div className="progress-bar" style={{width: `${value}`}} />
+        <div className="progress-bar" style={{width: `${value}%`}} />
       </div>
     )
   }

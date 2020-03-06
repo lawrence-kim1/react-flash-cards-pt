@@ -1,4 +1,5 @@
 import React from 'react';
+import ProgressBar from './review-progress-bar';
 
 class ReviewCards extends React.Component {
   constructor(props) {
@@ -73,6 +74,7 @@ class ReviewCards extends React.Component {
     return(
       <div className="container-sm">
         <h1 className="text-center">Review Cards</h1>
+        <ProgressBar />
         {this.displayCard()}
       </div>
     )
