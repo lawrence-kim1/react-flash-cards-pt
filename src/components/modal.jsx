@@ -1,19 +1,6 @@
 import React from 'react';
 
 class Modal extends React.Component{
-  constructor(props) {
-    super(props);
-    this.delete = this.delete.bind(this);
-    this.close = this.close.bind(this);
-  }
-
-  delete() {
-    this.props.delete(this.props.opened);
-  }
-
-  close() {
-    this.props.closeModal(null);
-  }
 
   render() {
     const card = this.props.opened;
@@ -32,8 +19,8 @@ class Modal extends React.Component{
               A: {card.answer}
             </div>
             <div>
-              <button onClick={this.close} className="btn btn-outline-secondary mr-3">Cancel</button>
-              <button onClick={this.delete} className="btn btn-outline-danger">Delete</button>
+              <button onClick={() => this.props.closeModal(null)} className="btn btn-outline-secondary mr-3">Cancel</button>
+              <button onClick={() => this.props.delete(card)} className="btn btn-outline-danger">Delete</button>
             </div>
           </div>
         </div>
