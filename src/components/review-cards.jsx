@@ -12,6 +12,7 @@ class ReviewCards extends React.Component {
     this.nextCard = this.nextCard.bind(this);
     this.previousCard = this.previousCard.bind(this);
     this.flipCard = this.flipCard.bind(this);
+    this.checkProgress = this.checkProgress.bind(this);
   }
 
   componentDidMount() {
@@ -45,38 +46,47 @@ class ReviewCards extends React.Component {
     )
   }
 
+  checkProgress() {
+    const allCards = this.props.cards;
+    let progress = ((this.state.index / allCards.length) * 100);
+    if ((this.state.index + 1 === allCards.length) && (!this.state.front)) {
+      progress = 100
+    }
+    this.setState({ progress });
+  }
+
   nextCard() {
     const allCards = this.props.cards;
-    let progress = ((this.state.index + 1) / allCards.length) * 100;
-    if (progress === 100) {
-      progress = 0;
-    }
     this.setState(() => {
       return (this.state.index === allCards.length - 1)
-        ? { index: 0, front: true, progress }
-        : { index: this.state.index + 1, front: true, progress }
+        ? { index: 0, front: true }
+        : { index: this.state.index + 1, front: true }
     },
-      () => this.props.setActiveCard(this.state.index)
+      () => {
+        this.props.setActiveCard(this.state.index)
+        this.checkProgress();
+      }
     );
   }
 
   previousCard() {
     const allCards = this.props.cards;
-    let progress = ((this.state.index + 1) / allCards.length) * 100;
-    if (progress === 100) {
-      progress = 0;
-    }
     this.setState(() => {
       return (this.state.index === 0)
-        ? { index: allCards.length - 1, front: true, progress }
-        : { index: this.state.index - 1, front: true, progress }
+        ? { index: allCards.length - 1, front: true }
+        : { index: this.state.index - 1, front: true }
     },
-      () => this.props.setActiveCard(this.state.index)
+      () => {
+        this.props.setActiveCard(this.state.index)
+        this.checkProgress();
+      }
     );
   }
 
   flipCard() {
-    this.setState({ front: !this.state.front })
+    this.setState({ front: !this.state.front },
+      () => this.checkProgress()
+    )
   }
 
   render() {
