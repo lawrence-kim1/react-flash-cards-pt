@@ -1,15 +1,18 @@
 import React from 'react';
+import ProgressBar from './review-progress-bar';
 
 class ReviewCards extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       index: 0,
-      front: true
+      front: true,
+      progress: 0
     }
     this.nextCard = this.nextCard.bind(this);
     this.previousCard = this.previousCard.bind(this);
     this.flipCard = this.flipCard.bind(this);
+    this.checkProgress = this.checkProgress.bind(this);
   }
 
   componentDidMount() {
@@ -43,6 +46,15 @@ class ReviewCards extends React.Component {
     )
   }
 
+  checkProgress() {
+    const allCards = this.props.cards;
+    let progress = ((this.state.index / allCards.length) * 100);
+    if ((this.state.index + 1 === allCards.length) && (!this.state.front)) {
+      progress = 100
+    }
+    this.setState({ progress });
+  }
+
   nextCard() {
     const allCards = this.props.cards;
     this.setState(() => {
@@ -50,7 +62,10 @@ class ReviewCards extends React.Component {
         ? { index: 0, front: true }
         : { index: this.state.index + 1, front: true }
     },
-      () => this.props.setActiveCard(this.state.index)
+      () => {
+        this.props.setActiveCard(this.state.index)
+        this.checkProgress();
+      }
     );
   }
 
@@ -61,18 +76,24 @@ class ReviewCards extends React.Component {
         ? { index: allCards.length - 1, front: true }
         : { index: this.state.index - 1, front: true }
     },
-      () => this.props.setActiveCard(this.state.index)
+      () => {
+        this.props.setActiveCard(this.state.index)
+        this.checkProgress();
+      }
     );
   }
 
   flipCard() {
-    this.setState({ front: !this.state.front })
+    this.setState({ front: !this.state.front },
+      () => this.checkProgress()
+    )
   }
 
   render() {
     return(
       <div className="container-sm">
         <h1 className="text-center">Review Cards</h1>
+        <ProgressBar progress={this.state.progress} />
         {this.displayCard()}
       </div>
     )
