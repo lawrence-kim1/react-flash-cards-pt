@@ -48,10 +48,10 @@ class ReviewCards extends React.Component {
 
   checkProgress() {
     const allCards = this.props.cards;
-    let progress = ((this.state.index / allCards.length) * 100);
-    if ((this.state.index + 1 === allCards.length) && (!this.state.front)) {
-      progress = 100
-    }
+    let progress;
+    this.state.front
+      ? progress = (this.state.index / allCards.length) * 100
+      : progress = ((this.state.index + 1) / allCards.length) * 100;
     this.setState({ progress });
   }
 
