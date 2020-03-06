@@ -3,6 +3,7 @@ import ViewCards from './view-cards';
 import ReviewCards from './review-cards';
 import CreateCard from './create-card';
 import Nav from './nav';
+import Modal from './modal';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class App extends React.Component {
     this.state = {
       view: 'view-cards',
       activeCard: null,
+      modal: null,
       cards: localStorage.getItem('flash-cards')
         ? JSON.parse(localStorage.getItem('flash-cards'))
         : []
@@ -17,6 +19,8 @@ class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.addCard = this.addCard.bind(this);
     this.setActiveCard = this.setActiveCard.bind(this);
+    this.displayModal = this.displayModal.bind(this);
+    this.deleteCard = this.deleteCard.bind(this);
   }
 
   setView(view) {
@@ -30,7 +34,7 @@ class App extends React.Component {
       case 'review-cards':
         return <ReviewCards cards={this.state.cards} activeCard={this.state.activeCard} setActiveCard={this.setActiveCard} />;
       case 'view-cards':
-        return <ViewCards cards={this.state.cards} />;
+        return <ViewCards cards={this.state.cards} displayModal={this.displayModal} />;
       default:
         return null;
     }
@@ -52,11 +56,26 @@ class App extends React.Component {
     this.setState({ activeCard });
   }
 
+  displayModal(card) {
+    this.setState({ modal: card });
+  }
+
+  deleteCard(deletedCard) {
+    const oldCards = this.state.cards;
+    const deletedCardIndex = oldCards.findIndex(card => deletedCard === card);
+    const newCards = [...oldCards];
+    newCards.splice(deletedCardIndex, 1);
+    this.setState({ cards: newCards, modal: null }, () => this.saveCards());
+  }
+
   render() {
     return(
       <div>
         <Nav setView={this.setView} />
-        {this.getView()}
+        <div>
+          {this.getView()}
+          <Modal opened={this.state.modal} closeModal={this.displayModal} delete={this.deleteCard} />
+        </div>
       </div>
     )
   }

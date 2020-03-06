@@ -47,8 +47,8 @@ class ReviewCards extends React.Component {
     const allCards = this.props.cards;
     this.setState(() => {
       return (this.state.index === allCards.length - 1)
-        ? { index: 0 }
-        : { index: this.state.index + 1 }
+        ? { index: 0, front: true }
+        : { index: this.state.index + 1, front: true }
     },
       () => this.props.setActiveCard(this.state.index)
     );
@@ -58,8 +58,8 @@ class ReviewCards extends React.Component {
     const allCards = this.props.cards;
     this.setState(() => {
       return (this.state.index === 0)
-        ? { index: allCards.length - 1 }
-        : { index: this.state.index - 1 }
+        ? { index: allCards.length - 1, front: true }
+        : { index: this.state.index - 1, front: true }
     },
       () => this.props.setActiveCard(this.state.index)
     );
