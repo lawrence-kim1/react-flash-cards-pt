@@ -4,6 +4,7 @@ import ReviewCards from './review-cards';
 import CreateCard from './create-card';
 import Nav from './nav';
 import Modal from './modal';
+import UpdateCard from './update-card';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,6 +21,8 @@ class App extends React.Component {
     this.addCard = this.addCard.bind(this);
     this.setActiveCard = this.setActiveCard.bind(this);
     this.displayModal = this.displayModal.bind(this);
+    this.displayUpdate = this.displayUpdate.bind(this);
+    this.updateCard = this.updateCard.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
   }
 
@@ -34,7 +37,9 @@ class App extends React.Component {
       case 'review-cards':
         return <ReviewCards cards={this.state.cards} activeCard={this.state.activeCard} setActiveCard={this.setActiveCard} />;
       case 'view-cards':
-        return <ViewCards cards={this.state.cards} displayModal={this.displayModal} />;
+        return <ViewCards cards={this.state.cards} displayModal={this.displayModal} displayUpdate={this.displayUpdate} />;
+      case 'update-card':
+        return <UpdateCard setView={this.setView} card={this.state.activeCard} updateCard={this.updateCard} />;
       default:
         return null;
     }
@@ -58,6 +63,17 @@ class App extends React.Component {
 
   displayModal(card) {
     this.setState({ modal: card });
+  }
+
+  displayUpdate(updatingCard) {
+    this.setState({ view: 'update-card', activeCard: updatingCard });
+  }
+
+  updateCard(updatedCard) {
+    const updatedCards = [...this.state.cards];
+    const cardIndex = this.state.cards.findIndex(card => card === this.state.activeCard);
+    updatedCards.splice(cardIndex, 1, updatedCard);
+    this.setState({ cards: updatedCards }, () => this.saveCards());
   }
 
   deleteCard(deletedCard) {
