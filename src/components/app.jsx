@@ -74,7 +74,7 @@ class App extends React.Component {
   updateCard(updatedCard) {
     const updatedCards = [...this.state.cards];
     const updatedIndex = updatedCard.index;
-    delete card.index;
+    delete updatedCard.index;
     updatedCards.splice(updatedIndex, 1, updatedCard);
     this.setState({ cards: updatedCards }, () => this.saveCards());
   }
