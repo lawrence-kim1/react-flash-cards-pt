@@ -6,7 +6,8 @@ class ReviewCards extends React.Component {
     super(props);
     this.state = {
       index: 0,
-      front: true
+      front: true,
+      progress: 0
     }
     this.nextCard = this.nextCard.bind(this);
     this.previousCard = this.previousCard.bind(this);
@@ -46,10 +47,11 @@ class ReviewCards extends React.Component {
 
   nextCard() {
     const allCards = this.props.cards;
+    const progress = (this.state.index + 1) / allCards.length;
     this.setState(() => {
       return (this.state.index === allCards.length - 1)
-        ? { index: 0, front: true }
-        : { index: this.state.index + 1, front: true }
+        ? { index: 0, front: true, progress }
+        : { index: this.state.index + 1, front: true, progress }
     },
       () => this.props.setActiveCard(this.state.index)
     );
@@ -57,10 +59,11 @@ class ReviewCards extends React.Component {
 
   previousCard() {
     const allCards = this.props.cards;
+    const progress = (this.state.index + 1) / allCards.length;
     this.setState(() => {
       return (this.state.index === 0)
-        ? { index: allCards.length - 1, front: true }
-        : { index: this.state.index - 1, front: true }
+        ? { index: allCards.length - 1, front: true, progress }
+        : { index: this.state.index - 1, front: true, progress }
     },
       () => this.props.setActiveCard(this.state.index)
     );
@@ -74,7 +77,7 @@ class ReviewCards extends React.Component {
     return(
       <div className="container-sm">
         <h1 className="text-center">Review Cards</h1>
-        <ProgressBar />
+        <ProgressBar progress={this.state.progress} />
         {this.displayCard()}
       </div>
     )
