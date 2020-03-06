@@ -47,7 +47,10 @@ class ReviewCards extends React.Component {
 
   nextCard() {
     const allCards = this.props.cards;
-    const progress = (this.state.index + 1) / allCards.length;
+    let progress = ((this.state.index + 1) / allCards.length) * 100;
+    if (progress === 100) {
+      progress = 0;
+    }
     this.setState(() => {
       return (this.state.index === allCards.length - 1)
         ? { index: 0, front: true, progress }
@@ -59,7 +62,10 @@ class ReviewCards extends React.Component {
 
   previousCard() {
     const allCards = this.props.cards;
-    const progress = (this.state.index + 1) / allCards.length;
+    let progress = ((this.state.index + 1) / allCards.length) * 100;
+    if (progress === 100) {
+      progress = 0;
+    }
     this.setState(() => {
       return (this.state.index === 0)
         ? { index: allCards.length - 1, front: true, progress }
