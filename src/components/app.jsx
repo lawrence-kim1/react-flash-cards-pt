@@ -38,7 +38,7 @@ class App extends React.Component {
       case 'view-cards':
         return <ViewCards cards={this.state.cards} displayModal={this.displayModal} displayUpdate={this.displayUpdate} />;
       case 'update-card':
-        return <UpdateCard />;
+        return <UpdateCard setView={this.setView} />;
       default:
         return null;
     }

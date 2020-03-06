@@ -13,6 +13,26 @@ class UpdateCard extends React.Component {
     this.reset = this.reset.bind(this);
   }
 
+  handleQuestionChange(event) {
+    this.setState({ question: event.target.value });
+  }
+
+  handleAnswerChange(event) {
+    this.setState({ answer: event.target.value });
+  }
+
+  handleSubmit() {
+    event.preventDefault();
+    //this.props.addCard(this.state);
+    this.reset();
+  }
+
+  reset() {
+    event.preventDefault();
+    this.setState({ question: '', answer: '' });
+    this.props.setView('view-cards');
+  }
+
   render() {
     return(
       <div>
