@@ -38,7 +38,7 @@ class App extends React.Component {
       case 'view-cards':
         return <ViewCards cards={this.state.cards} displayModal={this.displayModal} displayUpdate={this.displayUpdate} />;
       case 'update-card':
-        return <UpdateCard setView={this.setView} />;
+        return <UpdateCard setView={this.setView} card={this.state.activeCard} />;
       default:
         return null;
     }
@@ -65,7 +65,7 @@ class App extends React.Component {
   }
 
   displayUpdate(card) {
-    this.setState({ view: 'update-card' });
+    this.setState({ view: 'update-card', activeCard: card });
   }
 
   deleteCard(deletedCard) {

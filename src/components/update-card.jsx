@@ -4,8 +4,8 @@ class UpdateCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      question: '',
-      answer: ''
+      question: this.props.card.question,
+      answer: this.props.card.answer
     }
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.handleAnswerChange = this.handleAnswerChange.bind(this);
@@ -37,7 +37,7 @@ class UpdateCard extends React.Component {
     return(
       <div>
         <h1 className="text-center">Update Card</h1>
-        <form className="container-sm" onSubmit={this.handleSubmit}>
+        <form className="container-sm">
           <div className="form-group">
             <label htmlFor="question">Question:</label>
             <textarea
