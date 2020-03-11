@@ -16,7 +16,7 @@ class ReviewCards extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.cards.question) return;
+    if (!this.props.cards[0].question) return;
     this.props.setActiveCard(this.state.index);
   }
 
