@@ -4,6 +4,13 @@ class ViewCards extends React.Component {
 
   displayCards() {
     const cardsArray = this.props.cards;
+    if (this.props.cards[0]) {
+      return (
+        <h2>
+          You have no cards currently! Go ahead and create a card!
+        </h2>
+      )
+    }
     const cards = cardsArray.map(card => {
       return (
         <div key={card.question} className="col-sm-4 mb-3">
