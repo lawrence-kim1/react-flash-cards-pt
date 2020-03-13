@@ -4,11 +4,11 @@ class ViewCards extends React.Component {
 
   displayCards() {
     const cardsArray = this.props.cards;
-    if (this.props.cards[0]) {
+    if (!this.props.cards[0]) {
       return (
-        <h2>
+        <h3 className="mx-auto text-center text-info">
           You have no cards currently! Go ahead and create a card!
-        </h2>
+        </h3>
       )
     }
     const cards = cardsArray.map(card => {
