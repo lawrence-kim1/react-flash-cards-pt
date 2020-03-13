@@ -21,28 +21,46 @@ class ReviewCards extends React.Component {
   }
 
   displayCard() {
-    if (this.props.activeCard === null) return;
+    if (!this.props.cards.length) {
+      return (
+        <h3 className="mx-auto text-center text-info">
+          You have no cards currently! Go ahead and&nbsp;
+          <span style={{ cursor: "pointer" }}
+            onClick={() => this.props.setView('create-card', {})}>
+            create a card!
+          </span>
+        </h3>
+      )
+    }
+    if (!this.props.activeCard) return null;
     return (
       this.state.front
-        ? <div className="text-light bg-dark text-center d-flex justify-content-between align-items-center"
-            style={{height: "25vh"}}>
-            <div className="carousel-control-prev-icon col-2"
-              onClick={this.previousCard} />
-            <h2 onClick={this.flipCard} className="col-8">
-              {this.props.activeCard.question}
-            </h2>
-            <div className="carousel-control-next-icon col-2"
-              onClick={this.nextCard} />
+        ? <div>
+            <ProgressBar progress={this.state.progress} />
+            <div className="text-light bg-dark text-center d-flex justify-content-between align-items-center"
+              style={{ height: "25vh" }}>
+              <div className="carousel-control-prev-icon col-2"
+                onClick={this.previousCard} />
+              <h2 onClick={this.flipCard} className="col-8">
+                {this.props.activeCard.question}
+              </h2>
+              <div className="carousel-control-next-icon col-2"
+                onClick={this.nextCard} />
+            </div>
           </div>
-        : <div className="text-dark bg-primary text-center d-flex justify-content-between align-items-center"
-            style={{height: "25vh"}}>
-            <div className="carousel-control-prev-icon col-2"
-              onClick={this.previousCard} />
-            <h2 onClick={this.flipCard} className="col-8">
-              {this.props.activeCard.answer}
-            </h2>
-            <div className="carousel-control-next-icon col-2"
-              onClick={this.nextCard} />
+
+        : <div>
+            <ProgressBar progress={this.state.progress} />
+            <div className="text-dark bg-primary text-center d-flex justify-content-between align-items-center"
+              style={{ height: "25vh" }}>
+              <div className="carousel-control-prev-icon col-2"
+                onClick={this.previousCard} />
+              <h2 onClick={this.flipCard} className="col-8">
+                {this.props.activeCard.answer}
+              </h2>
+              <div className="carousel-control-next-icon col-2"
+                onClick={this.nextCard} />
+            </div>
           </div>
     )
   }
@@ -94,7 +112,6 @@ class ReviewCards extends React.Component {
     return(
       <div className="container-sm">
         <h1 className="text-center">Review Cards</h1>
-        <ProgressBar progress={this.state.progress} />
         {this.displayCard()}
       </div>
     )

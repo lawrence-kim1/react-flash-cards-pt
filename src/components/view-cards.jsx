@@ -4,7 +4,7 @@ class ViewCards extends React.Component {
 
   displayCards() {
     const cardsArray = this.props.cards;
-    if (!this.props.cards[0]) {
+    if (!this.props.cards.length) {
       return (
         <h3 className="mx-auto text-center text-info">
           You have no cards currently! Go ahead and&nbsp;
