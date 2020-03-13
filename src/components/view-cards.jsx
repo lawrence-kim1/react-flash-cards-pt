@@ -4,6 +4,17 @@ class ViewCards extends React.Component {
 
   displayCards() {
     const cardsArray = this.props.cards;
+    if (!this.props.cards.length) {
+      return (
+        <h3 className="mx-auto text-center text-info">
+          You have no cards currently! Go ahead and&nbsp;
+          <span style={{ cursor: "pointer" }}
+            onClick={() => this.props.setView('create-card', {})}>
+            create a card!
+          </span>
+        </h3>
+      )
+    }
     const cards = cardsArray.map(card => {
       return (
         <div key={card.question} className="col-sm-4 mb-3">

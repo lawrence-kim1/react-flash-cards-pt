@@ -35,9 +35,9 @@ class App extends React.Component {
       case 'create-card':
         return <CreateCard addCard={this.addCard} setView={this.setView} />;
       case 'review-cards':
-        return <ReviewCards cards={this.state.cards} activeCard={this.state.activeCard} setActiveCard={this.setActiveCard} />;
+        return <ReviewCards cards={this.state.cards} setView={this.setView} activeCard={this.state.activeCard} setActiveCard={this.setActiveCard} />;
       case 'view-cards':
-        return <ViewCards cards={this.state.cards} displayModal={this.displayModal} displayUpdate={this.displayUpdate} />;
+        return <ViewCards cards={this.state.cards} setView={this.setView} displayModal={this.displayModal} displayUpdate={this.displayUpdate} />;
       case 'update-card':
         return <UpdateCard setView={this.setView} card={this.state.activeCard} updateCard={this.updateCard} />;
       default:
@@ -90,7 +90,10 @@ class App extends React.Component {
         <Nav setView={this.setView} />
         <div>
           {this.getView()}
-          <Modal opened={this.state.modal} closeModal={this.displayModal} delete={this.deleteCard} />
+          <Modal
+            opened={this.state.modal}
+            closeModal={this.displayModal}
+            delete={this.deleteCard} />
         </div>
       </div>
     )
