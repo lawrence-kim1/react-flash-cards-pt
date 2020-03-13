@@ -111,7 +111,7 @@ class ReviewCards extends React.Component {
   render() {
     return(
       <div className="container-sm">
-        <h1 className="text-center">Review Cards</h1>
+        <h1 className="text-center mb-3">Review Cards</h1>
         {this.displayCard()}
       </div>
     )
