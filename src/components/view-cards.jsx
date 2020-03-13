@@ -7,7 +7,11 @@ class ViewCards extends React.Component {
     if (!this.props.cards[0]) {
       return (
         <h3 className="mx-auto text-center text-info">
-          You have no cards currently! Go ahead and create a card!
+          You have no cards currently! Go ahead and&nbsp;
+          <span style={{ cursor: "pointer" }}
+            onClick={() => this.props.setView('create-card', {})}>
+            create a card!
+          </span>
         </h3>
       )
     }
