@@ -41,5 +41,5 @@ Try the application live at [https://flash-cards.lawrkim.com](https://flash-card
   ```
 3. Start the project. You can view the application by opening http://localhost:3000 in your browser.
   ```shell
-  npm run dev
+  npm run start
   ```
