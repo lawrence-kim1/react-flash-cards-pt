@@ -39,12 +39,12 @@ class ReviewCards extends React.Component {
             <ProgressBar progress={this.state.progress} />
             <div className="text-light bg-dark text-center d-flex justify-content-between align-items-center"
               style={{ height: "25vh" }}>
-              <div className="carousel-control-prev-icon col-2"
+              <div className="carousel-control-prev-icon col-2 carousel-controls"
                 onClick={this.previousCard} />
               <h2 onClick={this.flipCard} className="col-8">
                 {this.props.activeCard.question}
               </h2>
-              <div className="carousel-control-next-icon col-2"
+              <div className="carousel-control-next-icon col-2 carousel-controls"
                 onClick={this.nextCard} />
             </div>
           </div>
@@ -53,12 +53,12 @@ class ReviewCards extends React.Component {
             <ProgressBar progress={this.state.progress} />
             <div className="text-dark bg-primary text-center d-flex justify-content-between align-items-center"
               style={{ height: "25vh" }}>
-              <div className="carousel-control-prev-icon col-2"
+              <div className="carousel-control-prev-icon col-2 carousel-controls"
                 onClick={this.previousCard} />
               <h2 onClick={this.flipCard} className="col-8">
                 {this.props.activeCard.answer}
               </h2>
-              <div className="carousel-control-next-icon col-2"
+              <div className="carousel-control-next-icon col-2 carousel-controls"
                 onClick={this.nextCard} />
             </div>
           </div>
