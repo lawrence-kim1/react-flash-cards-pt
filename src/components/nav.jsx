@@ -2,30 +2,31 @@ import React from 'react';
 
 class Nav extends React.Component {
   render(){
+    const view = this.props.view;
     return (
       <nav className="navbar navbar-expand navbar-light bg-light">
         <div className="navbar-collapse">
-          <ul className="navbar-nav mr-auto">
+          <ul className="navbar-nav">
             <li className="nav-item">
-              <a href="#"
-              className="nav-link btn btn-outline-primary"
+              <div
+              className={`nav-link btn btn-outline-primary mr-2 font-weight-bold ${view === 'view-cards' ? 'active' : ''}`}
               onClick={() => this.props.setView('view-cards')}>
                 View Cards
-              </a>
+              </div>
             </li>
             <li className="nav-item">
-              <a href="#"
-              className="nav-link btn btn-outline-primary"
+              <div
+              className={`nav-link btn btn-outline-secondary mr-2 font-weight-bold ${view === 'review-cards' ? 'active' : ''}`}
               onClick={() => this.props.setView('review-cards')}>
                 Review
-              </a>
+              </div>
             </li>
             <li className="nav-item">
-              <a href="#"
-              className="nav-link btn btn-outline-primary"
+              <div
+              className={`nav-link btn btn-outline-info font-weight-bold ${view === 'create-card' ? 'active' : ''}`}
               onClick={() => this.props.setView('create-card')}>
                 Create Card
-              </a>
+              </div>
             </li>
           </ul>
         </div>
