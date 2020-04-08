@@ -87,7 +87,7 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <Nav setView={this.setView} />
+        <Nav setView={this.setView} view={this.state.view} />
         <div>
           {this.getView()}
           <Modal
