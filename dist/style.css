@@ -8,6 +8,19 @@
   position: relative;
   top: 50%;
   background-color: white;
+  padding: 1em;
+}
+
+.modal-bold {
+  font-weight: 700;
+}
+
+.modal-question {
+  color: blue;
+}
+
+.modal-answer {
+  color: red;
 }
 
 .carousel-controls {
