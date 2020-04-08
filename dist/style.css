@@ -12,10 +12,7 @@
   border-radius: 26px;
 }
 
-.carousel-controls {
+.hover-opacity:hover {
   cursor: pointer;
-}
-
-.carousel-controls:hover {
   opacity: 0.5;
 }

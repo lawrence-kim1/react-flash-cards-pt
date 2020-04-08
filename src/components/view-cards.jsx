@@ -8,8 +8,9 @@ class ViewCards extends React.Component {
       return (
         <h3 className="mx-auto text-center text-info">
           You have no cards currently! Go ahead and&nbsp;
-          <span style={{ cursor: "pointer" }}
-            onClick={() => this.props.setView('create-card', {})}>
+          <span
+            onClick={() => this.props.setView('create-card', {})}
+            className="hover-opacity">
             create a card!
           </span>
         </h3>
